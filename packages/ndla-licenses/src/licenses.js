@@ -4,11 +4,11 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
+ * @flow
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
+import { License } from './types';
 import { BY, SA, NC, ND } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
@@ -138,7 +138,10 @@ function licenseByLocale(license, locale) {
   };
 }
 
-export function getLicenseByAbbreviation(abbreviation, locale) {
+export function getLicenseByAbbreviation(
+  abbreviation: string,
+  locale: string,
+): License {
   switch (abbreviation) {
     case 'by-nc-nd':
       return licenseByLocale(byncnd, locale);
@@ -163,7 +166,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
   }
 }
 
-export function getLicenseByNBTitle(title, locale) {
+export function getLicenseByNBTitle(title: string, locale: string): License {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
       return getLicenseByAbbreviation('by-nc-nd', locale);

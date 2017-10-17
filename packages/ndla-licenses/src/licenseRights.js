@@ -4,11 +4,11 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
+ * @flow
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
+import { LicenseRight } from './types';
 
 // License rights
 export const BY = 'by'; // Attribution
@@ -147,7 +147,10 @@ function licenseRightByLocale(license, locale) {
   };
 }
 
-export function getLicenseRightByAbbreviation(abbreviation, locale) {
+export function getLicenseRightByAbbreviation(
+  abbreviation: string,
+  locale: string,
+): LicenseRight {
   switch (abbreviation) {
     case BY:
       return licenseRightByLocale(by, locale);
